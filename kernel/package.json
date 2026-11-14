@@ -1,0 +1,35 @@
+{
+  "name": "@agentic-garden/kernel",
+  "version": "0.0.1",
+  "description": "The Garden kernel: packets, journal, leases, gates, and harness adapters.",
+  "type": "module",
+  "bin": {
+    "garden": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsx src/cli.ts",
+    "test": "tsx --test test/*.test.ts",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "commander": "^15.1.0",
+    "semver": "^7.8.6",
+    "smol-toml": "^1.9.1",
+    "yaml": "^2.9.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/semver": "^7.7.1",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3"
+  }
+}

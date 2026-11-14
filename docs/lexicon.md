@@ -1,6 +1,6 @@
 # Lexicon — parked terms
 
-Terms we like but have not made canonical. `GLOSSARY.md` holds the eighteen that the framework actually runs on.
+Terms we like but have not made canonical. `GLOSSARY.md` holds the twenty-three that the framework actually runs on.
 
 **Promotion rule:** a parked term becomes canonical only when a practice depends on it — when a step of the cycle, a seed, or a tool would be unnamed or misnamed without it. There is no fixed count; the argument is the gate (ADR-0004). A term that is not earning its keep stays here, or gets cut.
 

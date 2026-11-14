@@ -59,6 +59,7 @@ The cycle repeats. Maturity does not. A product's POC → MVP → mature → mai
 | `docs/lexicon.md` | Parked terms. Good words we have not made binding yet. |
 | `docs/analogy.md` | The full mapping: layers, cycle, roles, and where the metaphor breaks. |
 | `docs/adr/` | Decisions about the framework itself. |
+| `kernel/` | The portable kernel — packets, journal, leases, gates, and harness adapters. *(first spike)* |
 | `seeds/` | The seed bank — one document per variety. *(not yet populated)* |
 | `tools/` | The potting shed — the skills collection. *(not yet populated)* |
 

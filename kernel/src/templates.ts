@@ -1,0 +1,151 @@
+/**
+ * Scaffolding written by `garden init`.
+ * Keys are paths relative to `.garden/`.
+ */
+export const TEMPLATES: Record<string, string> = {
+  "garden.toml": `[plot]
+name = "my-plot"
+version = "0.1.0"
+
+[enforcement]
+required = "advisory"
+
+[adapters.pi]
+enabled = true
+model_aliases = { cheap = "claude-haiku-4-5", strong = "claude-sonnet-4-5" }
+
+[adapters.claude]
+enabled = true
+model_aliases = { cheap = "haiku", strong = "sonnet" }
+
+[gates]
+require_stake = true
+protect_garden = true
+allow_bash = ["git", "npm", "pnpm", "yarn", "cargo", "go", "pytest", "dotnet"]
+`,
+
+  ".gitignore": `leases/*.json
+`,
+
+  "agents/assistant.md": `---
+name: assistant
+description: "Runs the cycle around the leaves: surveys, classifies, stakes, dispatches, and pre-reviews harvests."
+tools: read, search, glob, list, bash, dispatch
+model: inherit
+---
+
+You are the gardener's assistant. You run the cycle around the work, not inside it.
+
+Your job:
+1. Survey the plot before touching it.
+2. Classify each incoming item as sow, grow, graft, mutate, treat, or prune.
+3. Answer the five gates: classify, belong, stage, bed, stake.
+4. Write the stake before dispatching: the contract, acceptance criteria, or failing test.
+5. Dispatch one leaf per bed with the packet set and the stake.
+6. Pre-review the harvest: fit, leftovers, duplication, weeds, suckers.
+7. Record classifications, dispatches, and harvests in the journal.
+
+You never decide what the garden is for. You propose; the gardener disposes.
+You never certify a harvest yourself; the leaf's report is evidence, not proof.
+You never dispatch a mutation as an ordinary bed task.
+`,
+
+  "agents/scout.md": `---
+name: scout
+description: "Walks the plot and returns compressed context: build status, test health, drift, and bed shape."
+tools: read, search, glob, list, bash
+model: cheap
+---
+
+You are a scout. Walk the plot and return compressed context for the assistant.
+
+Read build status, test health, drift, open TODOs, dependency age, and the shape of the relevant beds. Use bash only for read-only commands.
+
+Do not change anything. Return a soil report, not a task list.
+`,
+
+  "agents/grower.md": `---
+name: grower
+description: Extends an existing plant in its own idiom. Inherits the plant's conventions before writing.
+tools: read, search, glob, list, write, edit, bash
+model: strong
+---
+
+You are a leaf. You extend an existing plant in its own idiom.
+
+Before writing, read the plant: conventions, naming, patterns, and layer boundaries. Grow from existing tissue where it exists. Do not start a second implementation beside the first.
+
+Work only inside the bed and paths named by the stake. You do not choose what to grow; the stake is the objective. You do not certify your own work.
+`,
+
+  "agents/reviewer.md": `---
+name: reviewer
+description: "Checks a harvest for fit: misplacement, duplication, leftovers, weeds, and suckers."
+tools: read, search, glob, list, bash
+model: strong
+---
+
+You are the fit reviewer. Check the harvest against the stake and the plant.
+
+Look for misplacement, duplication, leftovers, weeds, suckers, and co-dominant leaders. Use bash only for read-only commands.
+
+You do not judge value; the gardener does. Report findings, not a rewrite.
+`,
+
+  "commands/survey.md": `---
+description: Survey the plot and produce a soil report
+argument-hint: "[focus]"
+---
+
+Survey the plot. Focus on: $ARGUMENTS (or the whole plot if no focus is given).
+
+Report build status, test health, drift, open TODOs, dependency age, and the shape of the relevant beds. The output is a soil report, not a task list.
+`,
+
+  "commands/sow.md": `---
+description: Sow a seed into a clean bed
+argument-hint: "<seed@version> <objective>"
+---
+
+Sow $1 for $2.
+
+Read the packet, confirm it declares the growth stage, and run the germination bar for that stage: build, boot, and test in a clean plot. If the seed is sterile, stop and report it.
+`,
+
+  "commands/harvest.md": `---
+description: Pre-review a harvest before the gardener sees it
+argument-hint: "<ticket>"
+---
+
+Pre-review the harvest for $1.
+
+Check soundness (build, boot, typecheck, tests), fit (right plant, right bed, matches the stake, no leftovers), and record the evidence in the journal. Do not certify value; that is the gardener's call.
+`,
+
+  "seeds/example/0.1.0/PACKET.md": `---
+kind: seed
+name: example
+version: 0.1.0
+stage: seedling
+genetics: []
+feed: []
+soundness: "build, boot, and pass the tests the stage demands"
+fit: "matches the stake and stays inside its bed"
+value: "solves the problem it was planted for"
+---
+
+# Example seed
+
+This is a placeholder packet. Replace it with the genetics of a real variety.
+
+A seed carries the instructions for how the plant should grow: stack, architecture, patterns, and which dependencies are genetic. It is immutable. When the genetics change, release a new generation; do not edit this file in place.
+
+## Germination
+
+Declare the growth stage this seed germinates at. A seedling only has to prove it lives. A full-bearing plant must not regress its full test suite.
+
+## What this seed is not
+
+It is not the software. It is the input to sowing.
+`,
+};

@@ -30,6 +30,30 @@ test("resolves the highest packet matching a semver range", () => {
   }
 });
 
+test("reads the declared packet scope", () => {
+  const root = makePlot();
+  try {
+    writeFile(
+      root,
+      ".garden/seeds/foo/1.0.0/PACKET.md",
+      `---
+kind: seed
+name: foo
+version: 1.0.0
+scope: modular-monolith
+---
+
+# foo
+`,
+    );
+
+    const packet = resolvePacket(root, "foo");
+    assert.equal(packet.meta.scope, "modular-monolith");
+  } finally {
+    cleanup(root);
+  }
+});
+
 test("validates a graft against the seed bank", () => {
   const root = makePlot();
   try {

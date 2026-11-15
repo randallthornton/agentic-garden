@@ -69,9 +69,11 @@ The cycle repeats. Maturity does not. A product's POC → MVP → mature → mai
 | Packet | Kind | What it grows |
 | --- | --- | --- |
 | `seeds/angular-spa/` | Seed | Angular 22 SPA shell with Angular Material. |
-| `seeds/dotnet-api/` | Seed | .NET 11 Web API with EF Core 11 and Postgres 18. |
+| `seeds/dotnet-api/` | Seed | .NET 11 minimal API with EF Core 11 and Postgres 18. |
+| `seeds/dotnet-modular-monolith/` | Seed | .NET 11 MVC modular monolith with EF Core 11, DataAnnotations, and Postgres 18. |
 | `grafts/tailwind-union/` | Graft | Tailwind 4 layout union for the Angular SPA. |
-| `grafts/identity-gateway/` | Graft | OpenIddict + YARP identity gateway connecting the SPA and API. |
+| `grafts/identity-gateway/0.1.0/` | Graft | OpenIddict + YARP identity gateway for the minimal API seed. |
+| `grafts/identity-gateway/1.0.0/` | Graft | OpenIddict + YARP identity gateway for the modular monolith seed. |
 
 ## A note on the metaphor's limits
 

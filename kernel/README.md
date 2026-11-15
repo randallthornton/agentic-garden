@@ -73,6 +73,7 @@ kind: seed
 name: aspnet-api
 version: 1.2.0
 requires: []
+scope: modular-monolith
 stage: first-fruit
 genetics: [ef-core]
 feed: [json-serializer]

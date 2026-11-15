@@ -60,8 +60,18 @@ The cycle repeats. Maturity does not. A product's POC → MVP → mature → mai
 | `docs/analogy.md` | The full mapping: layers, cycle, roles, and where the metaphor breaks. |
 | `docs/adr/` | Decisions about the framework itself. |
 | `kernel/` | The portable kernel — packets, journal, leases, gates, and harness adapters. *(first spike)* |
-| `seeds/` | The seed bank — one document per variety. *(not yet populated)* |
+| `seeds/` | The distribution seed bank — packets ready to copy into a plot's `.garden/seeds/`. |
+| `grafts/` | The distribution graft bank — union packets ready to copy into a plot's `.garden/grafts/`. |
 | `tools/` | The potting shed — the skills collection. *(not yet populated)* |
+
+## Seed bank
+
+| Packet | Kind | What it grows |
+| --- | --- | --- |
+| `seeds/angular-spa/` | Seed | Angular 22 SPA shell with Angular Material. |
+| `seeds/dotnet-api/` | Seed | .NET 11 Web API with EF Core 11 and Postgres 18. |
+| `grafts/tailwind-union/` | Graft | Tailwind 4 layout union for the Angular SPA. |
+| `grafts/identity-gateway/` | Graft | OpenIddict + YARP identity gateway connecting the SPA and API. |
 
 ## A note on the metaphor's limits
 

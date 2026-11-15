@@ -4,6 +4,9 @@ import { z } from "zod";
 export const PacketKind = z.enum(["seed", "graft"]);
 export type PacketKind = z.infer<typeof PacketKind>;
 
+export const PacketScope = z.enum(["modular-monolith", "microservice"]);
+export type PacketScope = z.infer<typeof PacketScope>;
+
 export const GrowthStage = z.enum([
   "seedling",
   "first-fruit",
@@ -20,6 +23,7 @@ export const PacketMeta = z.object({
     .string()
     .refine((value) => semver.valid(value) !== null, "version must be valid semver"),
   requires: z.array(z.string()).default([]),
+  scope: PacketScope.optional(),
   stage: GrowthStage.default("seedling"),
   genetics: z.array(z.string()).default([]),
   feed: z.array(z.string()).default([]),
